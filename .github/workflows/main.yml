@@ -41,7 +41,7 @@ jobs:
           sed -i 's/.*"type":"ssr".*//g' index.html
           sed -i 's/.*"type":"trojan".*//g' index.html
           sed -i '/^$/d' index.html
-          sed -i '/.*"port":443.*/p' index.html >index2.html
+          sed -i '/.*"port":443.*/p' index.html > index2.html
           echo ::set-output name=status::success
         
       - name: Commit Files
