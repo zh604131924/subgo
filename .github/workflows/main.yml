@@ -32,8 +32,17 @@ jobs:
           curl -o index.html https://proxy.tgbot.co/clash/proxies?type=vmess
           echo ::set-output name=status::success
           
-      - name: Commit Files
+      - name: Filter config
         if: steps.getsub.output.status != 'success'
+        id: filter
+        run: |
+          sed -i 's/.*"type":"ss".*//g' index.html
+          sed -i 's/.*"type":"ssr".*//g' index.html
+          
+          echo ::set-output name=status::success
+        
+      - name: Commit Files
+        if: steps.filter.output.status != 'success'
         id: commit
         run: |
           git config --local user.email "action@github.com"
