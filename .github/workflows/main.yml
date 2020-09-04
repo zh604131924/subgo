@@ -2,7 +2,7 @@ name: subgo
 
 on:
   schedule: 
-    - cron: "*/60 * * * *"
+    - cron: "*/30 * * * *"
   push:
     branches:
       - master
@@ -38,7 +38,7 @@ jobs:
         run: |
           sed -i 's/.*"type":"ss".*//g' index.html
           sed -i 's/.*"type":"ssr".*//g' index.html
-          
+          cat index.html |sed '/^$/d'
           echo ::set-output name=status::success
         
       - name: Commit Files
