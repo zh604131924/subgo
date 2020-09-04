@@ -31,3 +31,20 @@ jobs:
         run: |
           curl -o index.html http://tomtop.xyz/clash/proxies?type=vmess
           echo ::set-output name=status::success
+          
+      - name: Commit Files
+        if: steps.getsub.output.status != 'success'
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "更新"
+          echo ::set-output name=status::success
+          
+      # 此处的 ${{ secrets.GITHUB_TOKEN }} 是 Actions 自有变量，不用管
+      - name: GitHub Push
+        if: steps.commit.output.status != 'success'
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
