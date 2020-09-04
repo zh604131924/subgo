@@ -29,7 +29,7 @@ jobs:
       - name: Get sub thingy
         id: getsub
         run: |
-          curl -o index.html https://proxy.tgbot.co/clash/proxies?type=vmess,ssr,ss
+          curl -o index.html https://proxy.tgbot.co/clash/proxies?type=vmess
           echo ::set-output name=status::success
           
       - name: Filter config
@@ -39,6 +39,7 @@ jobs:
           sed -i 's/.*CN_.*//g' index.html
           sed -i 's/.*"type":"ss".*//g' index.html
           sed -i 's/.*"type":"ssr".*//g' index.html
+          sed -i 's/.*"type":"trojan".*//g' index.html
           sed -i '/^$/d' index.html
           echo ::set-output name=status::success
         
@@ -58,3 +59,12 @@ jobs:
         uses: ad-m/github-push-action@v0.5.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Send Info to Telegram
+        if: steps.commit.output.status != 'success'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            订阅清洗完成
