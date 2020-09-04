@@ -2,7 +2,7 @@ name: subgo
 
 on:
   schedule: 
-    - cron: "25 2 * * *"
+    - cron: "*/15 * * * *"
   push:
     branches:
       - master
