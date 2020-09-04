@@ -48,7 +48,7 @@ jobs:
           sed -i 's/"m\.[^ ]*"},/"data.video.qiyi.com"},/g' index3.html
           sed -i 's/"www\.[^ ]*"}/"data.video.qiyi.com"},/g' index3.html
           sed -i 's/"m\.[^ ]*"}/"data.video.qiyi.com"},/g' index3.html
-          sed -i '1i\proxies:x' index3.html
+          sed -i '1i\proxies:' index3.html
           echo ::set-output name=status::success
         
       - name: Commit Files
