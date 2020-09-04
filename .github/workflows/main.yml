@@ -29,7 +29,7 @@ jobs:
       - name: Get sub thingy
         id: getsub
         run: |
-          curl -o index.html https://subcon.py6.pw/sub?target=clash&new_name=true&url=https%3A%2F%2Fproxy.tgbot.co%2Fclash%2Fproxies%3Ftype%3Dvmess&insert=false&emoji=true&list=false&udp=true&tfo=false&scv=false&fdn=false&sort=false
+          curl -o index.html https://proxy.tgbot.co/clash/proxies?type=vmess
           echo ::set-output name=status::success
           
       - name: Filter config
