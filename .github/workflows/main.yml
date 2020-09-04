@@ -37,6 +37,7 @@ jobs:
         id: filter
         run: |
           sed -i 's/.*CN_.*//g' index.html
+          sed -i 's/.*ZZ_.*//g' index.html
           sed -i 's/.*"type":"ss".*//g' index.html
           sed -i 's/.*"type":"ssr".*//g' index.html
           sed -i 's/.*"type":"trojan".*//g' index.html
