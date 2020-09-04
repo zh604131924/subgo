@@ -38,7 +38,7 @@ jobs:
         run: |
           sed -i 's/.*"type":"ss".*//g' index.html
           sed -i 's/.*"type":"ssr".*//g' index.html
-          cat index.html |sed '/^$/d'
+          sed -i '/^$/d' index.html
           echo ::set-output name=status::success
         
       - name: Commit Files
