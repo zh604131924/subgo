@@ -41,7 +41,7 @@ jobs:
           sed -i 's/.*"type":"ssr".*//g' index.html
           sed -i 's/.*"type":"trojan".*//g' index.html
           sed -i '/^$/d' index.html
-          sed -n '/.*"port":443.*/p' index.html > index2.html
+          sed -n '/.*"port":443,.*/p' index.html > index2.html
           sed -rn '/.*((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5]).*/p' index2.html > index3.html
           sed -ri 's/^[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:[0-9]{1,5})?[-a-zA-Z0-9()@:%_\\\+\.~#?&//=]*$/data.video.qiyi.com/g' index3.html
           echo ::set-output name=status::success
