@@ -44,7 +44,8 @@ jobs:
           sed -i '/^$/d' index.html
           sed -n '/.*"port":443,.*/p' index.html > index2.html
           sed -rn '/.*((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5]).*/p' index2.html > index3.html
-          sed -i 's/www\.[^ ]*/data.video.qiyi.com/g' index3.html
+          sed -i 's/"www\.[^ ]*"/"data.video.qiyi.com"/g' index3.html
+          sed -i 's/"m\.[^ ]*"/"data.video.qiyi.com"/g' index3.html
           echo ::set-output name=status::success
         
       - name: Commit Files
