@@ -17,12 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:      
-      - name: Set Timezone to UTC+8
-        env: 
-            DEBIAN_FRONTEND: noninteractive
-        run: |
-          sudo timedatectl set-timezone "$TZ"
- 
       - name: Clone Workflow Repository
         uses: actions/checkout@v2
 
@@ -51,6 +45,22 @@ jobs:
           sed -i 's/"m\.[^ ]*"}/"data.video.qiyi.com"}/g' index3.html
           sed -i 's/{"HOST":"[^ ]*\.xyz"},/"HOST":"data.video.qiyi.com"},/g' index3.html
           sed -i 's/"servername":"[^ ]*\.xyz"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.top"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.top"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.ml"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.ml"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.tk"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.tk"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.live"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.live"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.cf"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.cf"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.ga"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.ga"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.cn"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.cn"}/"servername":"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/{"HOST":"[^ ]*\.tech"},/"HOST":"data.video.qiyi.com"},/g' index3.html
+          sed -i 's/"servername":"[^ ]*\.tech"}/"servername":"data.video.qiyi.com"}/g' index3.html
           sed -n '/.*data.video.qiyi.com.*/p' index3.html > index4.html
           rm index3.html
           mv index4.html index3.html
