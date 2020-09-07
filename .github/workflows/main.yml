@@ -49,8 +49,8 @@ jobs:
           sed -i 's/"m\.[^ ]*"},/"data.video.qiyi.com"},/g' index3.html
           sed -i 's/"www\.[^ ]*"}/"data.video.qiyi.com"}/g' index3.html
           sed -i 's/"m\.[^ ]*"}/"data.video.qiyi.com"}/g' index3.html
-          sed -i 's/".*\.xyz"}/"data.video.qiyi.com"}/g' index3.html
-          sed -i 's/".*\.xyz"}/"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/".*"HOST":\"\.xyz"},/"data.video.qiyi.com"}/g' index3.html
+          sed -i 's/".*"HOST":\"\.xyz"}/"data.video.qiyi.com"}/g' index3.html
           sed -n '/.*data.video.qiyi.com.*/p' index3.html > index4.html
           rm index3.html
           mv index4.html index3.html
