@@ -81,18 +81,15 @@ jobs:
           git add .
           git commit -m "更新"
           echo ::set-output name=status::success
+           
+      - name: Transcribe to QX formant
+        run: |
+          curl -o indexqx.html 'https://subcon.py6.pw/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgotr%2Fmaster%2Findex.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
+          sed -i 's/fast-open=false,/tls-verification=true,\sfast-open=false,/g' indexqx.html
           
       # 此处的 ${{ secrets.GITHUB_TOKEN }} 是 Actions 自有变量，不用管
       - name: GitHub Push
         if: steps.commit.output.status != 'success'
-        uses: ad-m/github-push-action@v0.5.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Transcribe to QX formant
-        run: curl -o indexqx.html 'https://subcon.py6.pw/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgo%2Fmaster%2Findex3.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
-          
-      - name: GitHub Push again
         uses: ad-m/github-push-action@v0.5.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
