@@ -77,7 +77,7 @@ jobs:
         id: trans
         run: |
           curl -o indexqx.html 'https://subcon.py6.pw/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgotr%2Fmaster%2Findex.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
-          sed -i 's/fast-open=false,/tls-verification=true,\sfast-open=false,/g' indexqx.html
+          sed -i 's/fast-open=false,/tls-verification=true, fast-open=false,/g' indexqx.html
           echo ::set-output name=status::success      
            
       - name: Commit Files
