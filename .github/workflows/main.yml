@@ -89,6 +89,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Transcribe to QX formant
+        run: curl -o indexqx.html 'https://subcon.py6.pw/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgo%2Fmaster%2Findex3.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
+          
+      - name: GitHub Push again
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Send Info to Telegram
         if: steps.commit.output.status != 'success'
         uses: appleboy/telegram-action@master
