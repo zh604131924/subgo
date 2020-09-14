@@ -81,7 +81,7 @@ jobs:
         if: steps.filter.output.status != 'success'
         id: trans
         run: |
-          curl -o indexqx.html 'https://subcon.py6.pw/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgotr%2Fmaster%2Findex.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
+          curl -o indexqx.html 'https://api.wcc.best/sub?target=quanx&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsprindjack%2Fsubgotr%2Fmaster%2Findex.html&insert=false&emoji=true&list=true&udp=true&tfo=false&scv=true&fdn=true&sort=true'
           sed -i 's/fast-open=false,/tls-verification=false, fast-open=false,/g' indexqx.html
           echo ::set-output name=status::success      
            
