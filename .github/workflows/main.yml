@@ -23,7 +23,7 @@ jobs:
       - name: Get sub thingy
         id: getsub
         run: |
-          curl -o index.html https://proxy.tgbot.co/clash/proxies?type=vmess
+          curl -o index.html https://pnb52.herokuapp.com/clash/proxies?type=vmess
           echo ::set-output name=status::success
           
       - name: Filter config
